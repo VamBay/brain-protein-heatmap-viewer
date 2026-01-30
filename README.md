@@ -166,7 +166,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 For questions or issues, please:
 - Open an issue on GitHub
-- Contact: your.email@institution.edu
+- Contact: yxu105@jh.edu
 
 ## Changelog
 

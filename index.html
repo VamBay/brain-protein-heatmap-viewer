@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Brain protein heatmap viewer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="title">Brain protein heatmap viewer</div>
+    <div class="subtitle">Type an accession / gene / protein name to color each brain region using your CSV values.</div>
+    <div id="status" class="status">Loading…</div>
+  </header>
+
+  <main class="layout">
+    <aside class="panel">
+      <div class="field">
+        <label for="proteinSearch">Protein (search)</label>
+        <input id="proteinSearch" type="text" placeholder="e.g., Q61327 or Th or Tyrosine hydroxylase" autocomplete="off" />
+        <div id="suggestions" class="suggestions" aria-label="Protein suggestions"></div>
+        <div id="proteinCount" class="hint"></div>
+      </div>
+
+      <div id="proteinInfo" class="field proteinInfo" style="display:none;">
+        <div class="infoSection">
+          <div class="infoLabel">Accession</div>
+          <div id="infoAccession" class="infoValue">—</div>
+        </div>
+        <div class="infoSection">
+          <div class="infoLabel">Gene name</div>
+          <div id="infoGene" class="infoValue">—</div>
+        </div>
+        <div class="infoSection">
+          <div class="infoLabel">Protein name</div>
+          <div id="infoProteinName" class="infoValue">—</div>
+        </div>
+        <div class="infoSection">
+          <div class="infoLabel">Tissue specificity</div>
+          <div id="infoTissue" class="infoValue">—</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="transformSelect">Transform</label>
+        <select id="transformSelect">
+          <option value="raw" selected>raw</option>
+          <option value="log2">log2(x)</option>
+          <option value="zscore">z-score</option>
+        </select>
+        <div class="hint">Transforms apply across regions for the selected protein.</div>
+      </div>
+
+      <div class="field">
+        <label for="alphaSlider">Alpha (fill opacity)</label>
+        <input id="alphaSlider" type="range" min="0.05" max="1" step="0.05" value="1" />
+        <div class="row">
+          <div id="alphaValue" class="pill">1.00</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Color scale</label>
+        <div class="legendRow">
+          <div id="legendBar" class="legendBar"></div>
+        </div>
+        <div class="legendRow">
+          <div id="legendMin" class="hint">–</div>
+          <div id="legendMax" class="hint" style="text-align:right;">–</div>
+        </div>
+        <div class="hint">NA values are shown in grey.</div>
+      </div>
+
+      <div class="field">
+        <label>View</label>
+        <div class="row">
+          <button id="fitBtn" class="btn">Fit</button>
+          <button id="resetBtn" class="btn">Reset</button>
+          <button id="exportBtn" class="btn">Export PNG</button>
+        </div>
+        <div class="hint">Scroll to zoom, drag to pan.</div>
+      </div>
+
+      <details class="field" open>
+        <summary>Region values</summary>
+        <div id="valuesPanel" class="values"></div>
+      </details>
+    </aside>
+
+    <section class="stage">
+      <div id="svgHost" class="svgHost"></div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

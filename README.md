@@ -14,12 +14,12 @@ An interactive web-based visualization tool for exploring protein expression lev
 
 ## Demo
 
-To run locally:
+**🚀 [Live Demo](https://vambay.github.io/brain-protein-heatmap-viewer/)**
+
+### Run Locally:
 1. Download all files to a folder
 2. Run a local server: `python -m http.server 8000`
 3. Open `http://localhost:8000` in your browser
-
-*Note: To create a live demo, enable GitHub Pages in your repository settings.*
 
 ## Data Format
 

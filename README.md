@@ -145,10 +145,10 @@ If you use this tool in your research, please cite:
 
 ```bibtex
 @software{brain_protein_heatmap_viewer,
-  author = {Your Name},
+  author = {Yuanwei Xu},
   title = {Brain Protein Heatmap Viewer},
   year = {2026},
-  url = {https://github.com/your-username/brain-protein-heatmap-viewer}
+  url = {https://github.com/VamBay/brain-protein-heatmap-viewer}
 }
 ```
 
@@ -158,8 +158,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Acknowledgments
 
-- Brain atlas SVG data source: [Add your source]
-- Protein expression data: [Add your source]
+- Brain atlas SVG data source: Yuanwei Xu @ JHU
+- Protein expression data: Yuanwei Xu @ JHU
 - Plasma color scheme inspired by Matplotlib's perceptually uniform colormaps
 
 ## Support

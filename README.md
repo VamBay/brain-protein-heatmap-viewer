@@ -2,8 +2,6 @@
 
 An interactive web-based visualization tool for exploring protein expression levels across different brain regions. This viewer allows researchers to visualize proteomics data on a brain atlas with an intuitive color-coded heatmap.
 
-![Brain Protein Heatmap Viewer](screenshot.png)
-
 ## Features
 
 - 🧠 **Interactive Brain Atlas**: Pan, zoom, and explore brain regions
@@ -16,7 +14,12 @@ An interactive web-based visualization tool for exploring protein expression lev
 
 ## Demo
 
-[Live Demo](https://your-username.github.io/brain-protein-heatmap-viewer/)
+To run locally:
+1. Download all files to a folder
+2. Run a local server: `python -m http.server 8000`
+3. Open `http://localhost:8000` in your browser
+
+*Note: To create a live demo, enable GitHub Pages in your repository settings.*
 
 ## Data Format
 

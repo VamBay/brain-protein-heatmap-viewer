@@ -209,8 +209,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 🙏 Acknowledgments
 
 - Brain atlas SVG: Allen Brain Atlas
-- Protein expression data: [Add your source]
-- Phosphosite data: [Add your source]
+- Protein expression data: SPOTTER
+- Phosphosite data: SPOTTER
 - Plasma color scheme inspired by Matplotlib's perceptually uniform colormaps
 
 ## 📧 Contact

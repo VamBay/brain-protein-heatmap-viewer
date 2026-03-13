@@ -4,7 +4,6 @@ An interactive web-based visualization tool for exploring **global protein** and
 
 🚀 **[Live Demo](https://vambay.github.io/brain-protein-heatmap-viewer/)**
 
-![Dual Brain Viewer](screenshot.png)
 
 ## ✨ Features
 

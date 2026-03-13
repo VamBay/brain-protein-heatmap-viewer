@@ -426,8 +426,15 @@ function applyHeatmapToViewer(values, viewerType, hasData, vmin, vmax){
     const rgb = colorForValue(val, vmin, vmax);
     const color = `rgb(${rgb.r},${rgb.g},${rgb.b})`;
     
-    // Update region color
-    const elements = regionElements.get(region) || regionElements.get(baseRegionId(region)) || [];
+    // Update region color - try both exact match and normalized match
+    const normalizedRegion = baseRegionId(region);
+    const elements = regionElements.get(region) || regionElements.get(normalizedRegion) || [];
+    
+    // Debug problematic regions
+    if(region.toLowerCase().includes('caudoputamen') || region.toLowerCase().includes('habenula')){
+      console.log(`Region: "${region}", Normalized: "${normalizedRegion}", Elements found: ${elements.length}`);
+    }
+    
     for(const el of elements){
       el.style.fill = color;
       el.style.opacity = state.alpha;
@@ -452,8 +459,10 @@ function applyHeatmapToViewer(values, viewerType, hasData, vmin, vmax){
 
 function baseRegionId(id){
   let b = String(id);
-  b = b.replace(/[\s]+/g," ").trim();
-  b = b.replace(/([_-])\d+$/,"");
+  // Replace both spaces AND underscores with spaces, then trim
+  b = b.replace(/[\s_]+/g," ").trim();
+  // Strip numbered suffixes like _1, _2, -1, -2
+  b = b.replace(/\s+\d+$/,"");
   b = b.replace(/(_copy|_dup)$/i,"");
   b = b.toLowerCase();
   return b;
@@ -474,6 +483,9 @@ function buildRegionElementIndex(svg, regionElements){
     if(!regionElements.has(base)) regionElements.set(base, []);
     regionElements.get(base).push(el);
   }
+  
+  // Debug: log region mapping
+  console.log("Region elements indexed:", Array.from(regionElements.keys()).sort());
 }
 
 // Load SVG for both viewers

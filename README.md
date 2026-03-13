@@ -92,20 +92,20 @@ Simply visit: [https://vambay.github.io/brain-protein-heatmap-viewer/](https://v
 
 3. **Open in browser**
    ```
-   http://localhost:8000/index_dual.html
+   http://localhost:8000/
    ```
 
 ## 📁 Repository Structure
 
 ```
 brain-protein-heatmap-viewer/
-├── index_dual.html              # Main HTML file for dual viewer
-├── style_dual.css               # Styling for dual viewer
-├── app_dual.js                  # JavaScript logic
+├── index.html                   # Main HTML file
+├── style.css                    # Styling
+├── app.js                       # JavaScript logic
 ├── data_protein_simple.csv      # Global protein expression data
 ├── data_phospho_simple.csv      # Phosphosite expression data
 ├── brain.svg                    # Brain atlas SVG
-├── process_data.py              # Data processing script
+├── process_data.py              # Data processing script (optional)
 ├── README.md                    # This file
 ├── LICENSE                      # MIT License
 └── .gitignore                   # Git ignore file
@@ -129,7 +129,7 @@ sp|Q61029|LAP2B_MOUSE@T159,Q61029,T159,1.0,0.6,...
 
 ### Changing the Color Scheme
 
-The color scheme is defined in `app_dual.js` (around line 52):
+The color scheme is defined in `app.js` (around line 52):
 
 ```javascript
 // Plasma gradient: dark blue -> purple -> orange -> yellow
@@ -144,7 +144,7 @@ function colorForValue(v, vmin, vmax){
 }
 ```
 
-Update both this function and the CSS gradient in `style_dual.css` (line 73).
+Update both this function and the CSS gradient in `style.css` (line 73).
 
 ### Using Your Own Data
 

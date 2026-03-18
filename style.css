@@ -1,0 +1,357 @@
+/* ── Dark theme (default) ─────────────────────────────────────────── */
+:root{
+  --bg0:#070b12;
+  --bg1:#0b1220;
+  --bg2:#0f1a2d;
+  --panel:#0b1627;
+  --stroke: rgba(255,255,255,0.10);
+  --stroke2: rgba(255,255,255,0.14);
+  --text:#e7eefc;
+  --muted:#a9b7d3;
+  --accent:#1e90ff;
+  --danger:#ff5a5a;
+  --success:#40c463;
+  --warning:#f9f871;
+  --shadow: 0 10px 35px rgba(0,0,0,.55);
+  --radius: 16px;
+  --input-bg: rgba(4,10,18,0.65);
+  --btn-bg: rgba(0,0,0,0.25);
+  --panel-gradient-from: rgba(255,255,255,0.03);
+  --panel-gradient-to: rgba(255,255,255,0.01);
+  --values-bg: rgba(0,0,0,0.25);
+  --valuerow-bg: rgba(0,0,0,0.18);
+  --suggestions-bg: rgba(4,10,18,0.80);
+  --topbar-bg: linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0));
+  --body-bg: radial-gradient(1200px 700px at 20% 0%, #101c30 0%, var(--bg0) 60%), linear-gradient(180deg, var(--bg1), var(--bg0));
+  --theme-toggle-bg: rgba(255,255,255,0.06);
+  --theme-toggle-border: rgba(255,255,255,0.14);
+  --theme-toggle-hover: rgba(30,144,255,0.2);
+}
+
+/* ── Light theme ──────────────────────────────────────────────────── */
+[data-theme="light"]{
+  --bg0:#f0f4fb;
+  --bg1:#e6ecf7;
+  --bg2:#dce5f2;
+  --panel:#ffffff;
+  --stroke: rgba(0,0,0,0.10);
+  --stroke2: rgba(0,0,0,0.14);
+  --text:#0f1929;
+  --muted:#4a5a78;
+  --accent:#1565c0;
+  --danger:#c62828;
+  --success:#2e7d32;
+  --warning:#f57f17;
+  --shadow: 0 10px 35px rgba(0,0,0,.12);
+  --input-bg: rgba(255,255,255,0.85);
+  --btn-bg: rgba(255,255,255,0.75);
+  --panel-gradient-from: rgba(255,255,255,0.90);
+  --panel-gradient-to: rgba(255,255,255,0.70);
+  --values-bg: rgba(240,244,251,0.85);
+  --valuerow-bg: rgba(255,255,255,0.80);
+  --suggestions-bg: rgba(255,255,255,0.97);
+  --topbar-bg: linear-gradient(180deg, rgba(255,255,255,0.60), rgba(255,255,255,0));
+  --body-bg: radial-gradient(1200px 700px at 20% 0%, #d6e4f7 0%, var(--bg0) 60%), linear-gradient(180deg, var(--bg1), var(--bg0));
+  --theme-toggle-bg: rgba(0,0,0,0.05);
+  --theme-toggle-border: rgba(0,0,0,0.14);
+  --theme-toggle-hover: rgba(21,101,192,0.12);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+  background: var(--body-bg);
+  color:var(--text);
+  transition: background 0.25s, color 0.25s;
+}
+
+/* ── Topbar ──────────────────────────────────────────────────────── */
+.topbar{
+  padding: 16px 18px 12px;
+  border-bottom: 1px solid var(--stroke);
+  background: var(--topbar-bg);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+.topbarLeft{ min-width: 0; }
+.title{font-size:20px;font-weight:700;letter-spacing:.2px;color:var(--text)}
+.subtitle{margin-top:4px;color:var(--muted);font-size:13px}
+.status{margin-top:6px;color:var(--muted);font-size:13px}
+
+/* ── Theme toggle ────────────────────────────────────────────────── */
+.themeToggle{
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border: 1px solid var(--theme-toggle-border);
+  border-radius: 999px;
+  background: var(--theme-toggle-bg);
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-top: 4px;
+  transition: background 0.18s, border-color 0.18s, color 0.18s;
+  font-family: inherit;
+}
+.themeToggle:hover{
+  background: var(--theme-toggle-hover);
+  border-color: var(--accent);
+}
+.themeToggle:active{ transform: translateY(1px); }
+.themeIcon{ font-size: 15px; line-height: 1; }
+.themeLabel{ color: var(--muted); }
+
+/* ── Layout ──────────────────────────────────────────────────────── */
+.layout{
+  display:grid;
+  grid-template-columns: 320px 1fr;
+  gap: 14px;
+  padding: 14px;
+  height: calc(100% - 76px);
+}
+
+.panel{
+  background: linear-gradient(180deg, var(--panel-gradient-from), var(--panel-gradient-to));
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius);
+  padding: 14px;
+  box-shadow: var(--shadow);
+  overflow:auto;
+  transition: background 0.25s, border-color 0.25s;
+}
+
+/* ── Form controls ───────────────────────────────────────────────── */
+.field{margin-bottom:14px}
+label{display:block;font-size:12px;color:var(--muted);margin:0 0 6px;font-weight:600;letter-spacing:0.3px}
+input[type="text"], select{
+  width:100%;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--stroke2);
+  background: var(--input-bg);
+  color: var(--text);
+  outline: none;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+  font-family: inherit;
+  font-size: 13px;
+}
+input[type="text"]:focus, select:focus{
+  border-color: rgba(30,144,255,0.7);
+  box-shadow: 0 0 0 3px rgba(30,144,255,0.18);
+}
+.hint{margin-top:6px;font-size:12px;color:var(--muted)}
+
+.row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.pill{
+  padding:6px 10px;
+  border:1px solid var(--stroke2);
+  border-radius:999px;
+  background:var(--btn-bg);
+  font-variant-numeric: tabular-nums;
+  color: var(--text);
+  font-size: 13px;
+}
+input[type="range"]{width:100%;accent-color: var(--accent);}
+
+/* ── Legend ──────────────────────────────────────────────────────── */
+.legendBar{
+  width: 100%;
+  height: 12px;
+  border-radius: 999px;
+  border: 1px solid var(--stroke2);
+  background: linear-gradient(90deg, #0d0887 0%, #6a00a8 33%, #b12a90 66%, #e16462 85%, #f0f921 100%);
+}
+.legendRow{display:flex;justify-content:space-between;align-items:center;margin-top:6px}
+
+/* ── Buttons ─────────────────────────────────────────────────────── */
+.btn{
+  appearance:none;
+  border:1px solid var(--stroke2);
+  background: var(--btn-bg);
+  color: var(--text);
+  padding: 8px 10px;
+  border-radius: 12px;
+  cursor:pointer;
+  font-size: 13px;
+  font-family: inherit;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+.btn:hover{border-color: var(--accent); color: var(--accent);}
+.btn:active{transform: translateY(1px)}
+
+/* ── Dual stage ──────────────────────────────────────────────────── */
+.dualStage{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  overflow:hidden;
+}
+
+.brainPanel{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.brainHeader{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:0 4px;
+}
+
+.brainHeader h3{
+  margin:0;
+  font-size:16px;
+  font-weight:600;
+  color:var(--text);
+}
+
+/* ── Status badges ───────────────────────────────────────────────── */
+.statusBadge{
+  font-size:11px;
+  padding:4px 10px;
+  border-radius:999px;
+  background: var(--btn-bg);
+  border:1px solid var(--stroke2);
+  color:var(--muted);
+  font-weight: 600;
+}
+
+.statusBadge.active{
+  background:rgba(64,196,99,0.15);
+  border-color:var(--success);
+  color:var(--success);
+}
+
+[data-theme="light"] .statusBadge.active{
+  background:rgba(46,125,50,0.12);
+}
+
+.statusBadge.na{
+  background:rgba(155,155,155,0.10);
+  border-color:rgba(100,110,130,0.3);
+  color:var(--muted);
+}
+
+/* ── Stage ───────────────────────────────────────────────────────── */
+.stage{
+  background: linear-gradient(180deg, var(--panel-gradient-from), var(--panel-gradient-to));
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow:hidden;
+  position:relative;
+  flex:1;
+  min-height:400px;
+  transition: background 0.25s, border-color 0.25s;
+}
+
+.svgHost{
+  width:100%;
+  height:100%;
+  display:block;
+  position:relative;
+  user-select:none;
+}
+
+/* ── Values panel ────────────────────────────────────────────────── */
+.valuesPanel{
+  background: var(--values-bg);
+  border: 1px solid var(--stroke);
+  border-radius: 12px;
+  padding:10px;
+  transition: background 0.25s, border-color 0.25s;
+}
+
+.valuesPanel summary{
+  cursor:pointer;
+  font-size:12px;
+  font-weight:600;
+  color:var(--text);
+  padding:4px;
+  user-select:none;
+}
+
+.values{
+  margin-top:10px;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  font-size:12px;
+  max-height:200px;
+  overflow-y:auto;
+}
+
+.valueRow{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  padding:7px 10px;
+  border-radius: 12px;
+  border:1px solid var(--stroke);
+  background: var(--valuerow-bg);
+  transition: background 0.2s, border-color 0.2s;
+}
+.valueRow:hover{border-color: rgba(30,144,255,0.35)}
+.valueLeft{display:flex;align-items:center;gap:10px;min-width:0}
+.swatch{width:14px;height:14px;border-radius:4px;border:1px solid rgba(128,128,128,0.35);flex-shrink:0}
+.regionName{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:180px;color:var(--text)}
+.regionVal{font-variant-numeric: tabular-nums;color: var(--muted);font-weight:500}
+
+/* ── Suggestions ─────────────────────────────────────────────────── */
+.suggestions{
+  margin-top:8px;
+  border:1px solid var(--stroke2);
+  border-radius: 12px;
+  background: var(--suggestions-bg);
+  overflow:hidden;
+  display:none;
+  max-height: 280px;
+  overflow-y:auto;
+  box-shadow: var(--shadow);
+}
+.suggItem{
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--stroke);
+  cursor:pointer;
+  font-size:12px;
+  color: var(--text);
+}
+.suggItem:last-child{border-bottom:none}
+.suggItem:hover{background: rgba(30,144,255,0.10)}
+.suggMeta{display:block;color: var(--muted); font-size:11px; margin-top:2px}
+
+/* ── Protein info card ───────────────────────────────────────────── */
+.proteinInfo{
+  background: var(--values-bg);
+  border: 1px solid var(--stroke2);
+  border-radius: 12px;
+  padding: 12px;
+  transition: background 0.25s, border-color 0.25s;
+}
+.infoSection{ margin-bottom: 10px; }
+.infoSection:last-child{ margin-bottom: 0; }
+.infoLabel{
+  font-size: 11px;
+  color: var(--muted);
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 700;
+}
+.infoValue{
+  font-size: 13px;
+  color: var(--text);
+  line-height: 1.5;
+  word-wrap: break-word;
+}
